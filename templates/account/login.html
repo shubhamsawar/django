@@ -1,0 +1,29 @@
+{% extends 'core/base.html' %}
+{% block content %}
+<section>
+<div class="container">
+  <div class="row">
+    <div class="col-12 col-sm-8 col-md-6 m-auto">
+      <div class="card mt-5">
+        <div class="card-body">
+          {% if not request.user.is_authenticated %}
+          <form method="post">
+          {% csrf_token %}
+  
+            <input type="text" class="form-control my-3 py-2" name="username" value="" placeholder="username">
+            <input type="password" class="form-control my-3 py-2" name="password" value="" placeholder="password">
+            <div class="text-center mt-3">
+              <button class="btn btn-primary">login</button><br><br>
+              <p><em>Need account?</em> <a href="{% url 'accounts:signup' %}"> click here to signup</a></p>
+            </div>
+          </form>
+      
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+{% endblock %}

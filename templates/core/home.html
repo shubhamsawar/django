@@ -1,0 +1,65 @@
+{% extends "./base.html" %}
+{% load static %}
+{% block title %}Home{% endblock %}
+{% block content %}
+
+
+<main>
+
+
+  <div class="album py-5 bg-light">
+    <div class="container">
+
+      <div class="pb-3 h5">All NEWS</div>
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-5 g-3">
+
+        
+        {% for i in news %}
+
+        <div class="col">
+          
+          <div class="card shadow-sm">
+            <img class="img-fluid" alt="Responsive image" src="{{i.img}}">
+            
+            <div class="card-body">
+              <p class="card-text"><strong>{{i.title|truncatechars:20}}</strong>
+                <a class="text-dark text-decoration-none" href="#"></a>
+              </p>
+              <div class="d-flex justify-content-between align-items-center">
+                <small class="text-muted">{{i.desc|truncatechars:50}}</small>
+              </div>
+              <div class="d-flex justify-content-between align-items-center">
+                <small class="text-muted">published on: {{i.date|date:"M d,Y"}}</small><br><br>
+                
+              </div>
+              <small class="text-muted">At {{i.date|time:"g:i,A"}}</small>
+            </div>
+            <div class="text-center mt-3">
+              <form action ="{{i.urls}}" method="get" target="_blank">
+                <input type="submit" class="btn btn-primary" name="q1" value="Read full article">
+              </form>
+              
+            </div>
+          </div>
+        
+        </div>
+        {% endfor %}
+
+      
+
+      </div>
+    </div>
+  </div>
+
+
+</main>
+
+{% endblock%}
+     
+
+   
+
+
+
+    
+    
